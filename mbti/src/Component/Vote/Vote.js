@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
-
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
 import { makeStyles } from '@material-ui/core/styles';
+import InputOption from './InputOption'
+import useInput from './../../Hooks/useInput'
+import useOption from './../../Hooks/useOption'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,27 +37,47 @@ function Vote(props) {
     const classes = useStyles()
     const [voteCount, setVoteCount] = React.useState(0);
 
+    const inputTitle = useInput("");
+    const inputUpperVote = useInput("");
+    const inputLowerVote = useInput("");
+    const inputDescription = useInput("");
+
+    const inputOption  = []
+
+    inputOption.push(useInput(""));
+    inputOption.push(useInput(""));    
+    // let [, ] = React.useState(["",""]);
+
+    function createVote( ){
+        console.log(inputTitle.value)
+        console.log(inputUpperVote.value)
+        console.log(inputLowerVote.value)
+        console.log(inputDescription.value)
+        console.log(inputOption)
+    }
+
     function addVotes(){
         const count = voteCount
         let Votes =[];
-    
+
         for(var i=0;i<count;i++){
-            Votes.push( <TextField id="standard-basic" label={"보기"+(i+3)} key={i} className={classes.Votes} />)
+            Votes.push(<InputOption key={"inputOpt"+(i+2)} className={classes} voteCount={i+2} value={""} />)
         }
         console.log(Votes)
         return Votes
     }
     return <div className={classes.root}>
-      <TextField id="standard-basic" label="제목" className={classes.bigVotes} />
-      <TextField id="standard-basic" disabled label="상위 설문" className={classes.Votes} />
-      <TextField id="standard-basic" disabled label="하위 설문" className={classes.Votes} />
-      <TextField id="standard-basic" label="내용" className={classes.bigVotes} />
-      <TextField id="standard-basic" label="보기1" className={classes.Votes} />
-      <TextField id="standard-basic" label="보기2" className={classes.Votes} />
+      <TextField id="inputTitle" label="제목" className={classes.bigVotes} {...inputTitle}></TextField>
+      <TextField id="inputUpperVote" disabled label="상위 설문" className={classes.Votes} {...inputUpperVote}></TextField>
+      <TextField id="inputLowerVote" disabled label="하위 설문" className={classes.Votes} {...inputLowerVote}></TextField>
+      <TextField id="inputDescription" label="내용" className={classes.bigVotes} {...inputDescription}></TextField>
+      <InputOption className={classes} key={"inputOpt"+(0)} voteCount={0} />
+      <InputOption className={classes} key={"inputOpt"+(1)} voteCount={1} />
       {addVotes()}
       {/* <TextField id="filled-basic" label="내용" variant="filled" />
       <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
-      <Button variant="contained" className={classes.addButton} onClick={(e)=>setVoteCount(voteCount + 1)} >보기 추가</Button>
+      <Button variant="contained" className={classes.addButton} onClick={()=>setVoteCount(voteCount + 1)} >보기 추가</Button>
+      <Button variant="contained" className={classes.addButton} onClick={()=>createVote( )} >제출</Button>
     </div>
 }
 export default Vote;
