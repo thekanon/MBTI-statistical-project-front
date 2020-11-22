@@ -22,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
 function InputOption(props) {
     const classes = useStyles();
     const inputOption = useInput("");
-    console.log(inputOption)
+
+    const getOption = async (e)=>{
+        console.log(inputOption)
+    }
+
     return <div className={classes.root}>
         <TextField id="standard-basic" label={"보기"+(props.voteCount+1)} className={classes.Votes} {...props} {...inputOption} ></TextField>
     </div>

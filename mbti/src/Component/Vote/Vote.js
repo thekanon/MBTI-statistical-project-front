@@ -56,6 +56,10 @@ function Vote(props) {
         console.log(inputOption)
     }
 
+    const getOptionData = () =>{
+        console.log("option")
+    }
+
     function addVotes(){
         const count = voteCount
         let Votes =[];
@@ -70,9 +74,9 @@ function Vote(props) {
       <TextField id="inputTitle" label="제목" className={classes.bigVotes} {...inputTitle}></TextField>
       <TextField id="inputUpperVote" disabled label="상위 설문" className={classes.Votes} {...inputUpperVote}></TextField>
       <TextField id="inputLowerVote" disabled label="하위 설문" className={classes.Votes} {...inputLowerVote}></TextField>
-      <TextField id="inputDescription" label="내용" className={classes.bigVotes} {...inputDescription}></TextField>
-      <InputOption className={classes} key={"inputOpt"+(0)} voteCount={0} />
-      <InputOption className={classes} key={"inputOpt"+(1)} voteCount={1} />
+      <TextField id="inputDescription" label="내용" className={classes.bigVotes} {...inputDescription} ></TextField>
+      <InputOption className={classes} key={"inputOpt"+(0)} voteCount={0} change={getOptionData} />
+      <InputOption className={classes} key={"inputOpt"+(1)} voteCount={1} change={getOptionData} />
       {addVotes()}
       {/* <TextField id="filled-basic" label="내용" variant="filled" />
       <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
