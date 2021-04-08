@@ -3,8 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import InputOption from './InputOption'
-import useInput from './../../Hooks/useInput'
-import useOption from './../../Hooks/useOption'
+import useInput from '../../Hooks/useInput'
+import useOption from '../../Hooks/useOption'
 
 const useStyles = makeStyles((theme) => ({
     root: {

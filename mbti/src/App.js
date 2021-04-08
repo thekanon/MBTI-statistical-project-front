@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import VoteList from './Component/Vote/VoteList'
+import VoteList from './Component/VoteEdit/VoteList'
 class App extends React.Component {
   render() {
     return (
