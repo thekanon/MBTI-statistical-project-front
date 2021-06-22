@@ -1,13 +1,36 @@
+import logo from './logo.svg';
 import React from 'react';
-import Currying from './R074_ReactCurrying'
+import './App.css';
+import VoteList from './Component/VoteEdit/VoteList'
+import { Route } from "react-router-dom";
+import voteListPage from './Page/VoteListPage';
+import userListPage from './Page/UserListPage'
+import reactRouter2 from './Page/R089_reactRouter2'
+import { Link } from 'react-router-dom'
 
-function App() {
-  return (
-    <div>
-      <h1>Start React 200!</h1>
-      <Currying/>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          임시 설문지 작성
+          <div className="menu">
+            <Link to={'/voteList'}>voteList</Link>
+            <Link to={'/userListPage'}>userList</Link>
+            <Link to={'/voteList'}>voteList</Link>
+            <Link to={'/reactRouter2'}>reactRouter2</Link>
+            <Link to={'/voteList'}>voteList</Link>
+            <Link to={'/reactRouter2'}>reactRouter2</Link>
+            <Link to={'/voteList'}>voteList</Link>
+            <Link to={'/reactRouter2'}>reactRouter2</Link>
+            <Link to={'/voteList'}>voteList</Link>
+            <Link to={'/reactRouter2'}>reactRouter2</Link>
+          </div>
+        </header>
+        <Route exact path='/voteList' component={voteListPage} />
+        <Route exact path='/userListPage' component={userListPage} />
+      </div>
+    );
+  }
 }
-
 export default App;
